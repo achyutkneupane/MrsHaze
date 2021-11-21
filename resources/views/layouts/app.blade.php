@@ -9,9 +9,25 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class='{{ request()->routeIs('mrshaze') ? 'bodyView' : 'bg-gray-100' }}'>
+    @if(request()->routeIs('mrshaze'))
     <div id="mrshaze"></div>
-
     <script src="{{ asset('js/app.js') }}"></script>
+    @else
+    @livewireStyles()
+    @stack('styles')
+    <div class="flex h-screen overflow-hidden rounded-lg">
+        @include('layouts.sidebar')
+        <div class="flex flex-col flex-1 w-0 overflow-hidden">
+            <main class="relative flex-1 overflow-y-auto focus:outline-none">
+                <div class="p-6">
+                    {{ $slot }}
+                </div>
+            </main>
+        </div>
+    </div>
+    @livewireScripts()
+    @stack('scripts')
+    @endif
 </body>
 </html>

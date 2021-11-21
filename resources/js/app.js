@@ -13,3 +13,4 @@
  */
 
 require('./routes')
+require('./config')

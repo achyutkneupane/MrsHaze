@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom';
-import Home from './components/Home';
-import Example from './components/Example';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import ViewArticle from './Pages/ViewArticle/ViewArticle';
 
 function Routes() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact>
-                    <Home />
+                    <LandingPage />
                 </Route>
-                <Route path='/example' exact>
-                    <Example />
-                </Route>
+                <Route exact path='/article/:slug' children={({ match }) => <ViewArticle match={match} />} />
             </Switch>
         </BrowserRouter>
     );
