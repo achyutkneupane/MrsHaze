@@ -9,6 +9,7 @@ import youtube from '../../../assets/icons/youtube.svg';
 import email from '../../../assets/icons/email.svg';
 import moment from 'moment';
 import excerptHtml from 'excerpt-html';
+import Footer from '../../components/Footer';
 
 class LandingPage extends Component {
 
@@ -88,6 +89,7 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
         );
     };

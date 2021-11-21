@@ -17,11 +17,11 @@ export class Header extends Component {
           this.setState({
             categories: res.data
           });
-          console.log(this.state.categories);
+        //   console.log(this.state.categories);
         })
-        .catch((error) => {
-            console.log(error);
-        })
+        // .catch((error) => {
+        //     console.log(error);
+        // })
     }
     render() {
         return (

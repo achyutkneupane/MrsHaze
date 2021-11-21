@@ -32,18 +32,18 @@ export class ViewArticle extends Component {
                     content: res.data.content
                 });
             })
-            .catch((error) => {
-                console.log(error);
-            })
+            // .catch((error) => {
+            //     console.log(error);
+            // })
         axios.get("http://127.0.0.1:8000/api/articles/without/"+newSlug)
             .then(res => {
                 this.setState({
                     others: res.data
                 });
             })
-            .catch((error) => {
-                console.log(error);
-            })
+            // .catch((error) => {
+            //     console.log(error);
+            // })
         window.scrollTo(0,0);
     }
     render() {
@@ -66,7 +66,7 @@ export class ViewArticle extends Component {
                     <h3 className='w-1/2 text-3xl text-center uppercase md:w-1/3 lg:w-1/6 h3title'>More Articles</h3>
                     <div className='flex flex-col w-full md:flex-row md:flex-wrap md:w-2/3'>
                         { this.state.others.map((post,index) => (
-                            <div className='w-full p-2 md:w-1/3' key={post.id+index}>
+                            <div className='w-full p-2 md:w-1/3' key={post.id}>
                                 <div className='flex flex-col items-center justify-start w-full h-full gap-2 text-center'>
                                     <img src={post.medium_cover} alt={post.title+' - Mrs. Haze'} loading='lazy' className='object-cover object-center max-h-96' />
                                     <h5 className='text-xl font-bold uppercase'>
