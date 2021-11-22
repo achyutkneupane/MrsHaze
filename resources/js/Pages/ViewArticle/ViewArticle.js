@@ -25,7 +25,7 @@ export class ViewArticle extends Component {
         }
     }
     axiosCalls(newSlug) {
-        axios.get("http://127.0.0.1:8000/api/article/"+newSlug)
+        axios.get("https://mrshaze.me/api/article/"+newSlug)
             .then(res => {
                 this.setState({
                     article: res.data,
@@ -35,7 +35,7 @@ export class ViewArticle extends Component {
             // .catch((error) => {
             //     console.log(error);
             // })
-        axios.get("http://127.0.0.1:8000/api/articles/without/"+newSlug)
+        axios.get("https://mrshaze.me/api/articles/without/"+newSlug)
             .then(res => {
                 this.setState({
                     others: res.data

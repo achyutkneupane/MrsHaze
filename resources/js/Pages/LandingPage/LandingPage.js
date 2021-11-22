@@ -21,7 +21,7 @@ class LandingPage extends Component {
       }
     
     componentDidMount() {
-        axios.get("http://127.0.0.1:8000/api/articles")
+        axios.get("https://mrshaze.me/api/articles")
         .then(res => {
           this.setState({
             articles: res.data
