@@ -24,6 +24,7 @@ Route::get('/articles', [ArticleController::class,'index'])->name('articles.all'
 Route::get('/article/{slug}', [ArticleController::class,'show'])->name('article.show');
 Route::get('/articles/without/{slug}', [ArticleController::class,'others'])->name('article.others');
 Route::get('/categories', [CategoryController::class,'index'])->name('categories.all');
+Route::get('/category/{slug}', [CategoryController::class,'show'])->name('category.show');
 Route::post('/subscribe',function(Request $request) {
     $email = collect($request->email)['value'];
     // return $email;

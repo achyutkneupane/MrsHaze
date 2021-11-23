@@ -45,9 +45,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($slug)
     {
-        //
+        return response()->json(Category::with(['articles' => function($query) {
+            $query->with('media')->orderBy('id','DESC');
+        }])->where('slug',$slug)->first());
     }
 
     /**

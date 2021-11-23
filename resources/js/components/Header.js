@@ -37,18 +37,18 @@ export class Header extends Component {
                                 </div>
                             </Link>
                         </div>
-                        {/* <div className="p-5 mt-3 overflow-y-auto border-t whitespace-nowrap scroll-hidden sticky-top"> */}
-                        <div className="mt-3 overflow-y-auto whitespace-nowrap scroll-hidden sticky-top">
-                            {/* <ul className="flex items-center justify-center list-none">
-                            { this.state.categories.map((post,index) => (
+                        <div className="p-5 mt-3 overflow-y-auto border-t whitespace-nowrap scroll-hidden sticky-top">
+                        {/* <div className="mt-3 overflow-y-auto whitespace-nowrap scroll-hidden sticky-top"> */}
+                            <ul className="flex items-center justify-center list-none">
+                            { this.state.categories.map((category,index) => (
                                 <li>
-                                    <Link to={ '/' }
+                                    <Link to={ '/category/'+category.slug }
                                         className="px-4 py-1 mr-1 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black ">
-                                            {post.title}
+                                            {category.title}
                                     </Link>
                                 </li>
                             )) }
-                            </ul> */}
+                            </ul>
                         </div>
                     </div>
                 </div>
