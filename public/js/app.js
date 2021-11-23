@@ -2146,7 +2146,7 @@ var LandingPage = /*#__PURE__*/function (_Component) {
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://mrshaze.me/api/articles").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get(window.origin + "/api/articles").then(function (res) {
         _this2.setState({
           articles: res.data,
           loading: false
@@ -2244,7 +2244,6 @@ var LandingPage = /*#__PURE__*/function (_Component) {
                       992: 3
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_responsive_masonry__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                      className: "w-full",
                       children: this.state.articles.map(function (post, index) {
                         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
                           className: "p-2",
@@ -2399,7 +2398,7 @@ var ViewArticle = /*#__PURE__*/function (_Component) {
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://mrshaze.me/api/article/" + newSlug).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get(window.origin + "/api/article/" + newSlug).then(function (res) {
         _this2.setState({
           article: res.data,
           content: res.data.content,
@@ -2412,7 +2411,7 @@ var ViewArticle = /*#__PURE__*/function (_Component) {
       this.setState({
         loading: true
       });
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://mrshaze.me/api/articles/without/" + newSlug).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get(window.origin + "/api/articles/without/" + newSlug).then(function (res) {
         _this2.setState({
           others: res.data,
           loading: false
@@ -2520,9 +2519,7 @@ var ViewArticle = /*#__PURE__*/function (_Component) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-__webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-
-__webpack_require__(/*! ./config */ "./resources/js/config.js");
+__webpack_require__(/*! ./routes */ "./resources/js/routes.js"); // require('./config')
 
 /***/ }),
 
@@ -2593,7 +2590,7 @@ var Footer = /*#__PURE__*/function (_Component) {
       var email = {
         value: _this.state.email
       };
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://mrshaze.me/api/subscribe", {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("window.origin+\"/api/subscribe", {
         email: email
       }).then(function (res) {
         console.log(res.data);
@@ -2821,7 +2818,7 @@ var Header = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://mrshaze.me/api/categories").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get(window.origin + "/api/categories").then(function (res) {
         _this2.setState({
           categories: res.data
         }); //   console.log(this.state.categories);
@@ -2932,18 +2929,6 @@ var Spinner = /*#__PURE__*/function (_Component) {
   return Spinner;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Spinner);
-
-/***/ }),
-
-/***/ "./resources/js/config.js":
-/*!********************************!*\
-  !*** ./resources/js/config.js ***!
-  \********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.g.config = {
-  base_url: 'https://127.0.0.1:8000/api/'
-};
 
 /***/ }),
 

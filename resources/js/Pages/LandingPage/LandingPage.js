@@ -26,7 +26,7 @@ class LandingPage extends Component {
         this.setState({
             loading: true,
         });
-        axios.get("https://mrshaze.me/api/articles")
+        axios.get(window.origin+"/api/articles")
         .then(res => {
           this.setState({
             articles: res.data,
@@ -79,7 +79,7 @@ class LandingPage extends Component {
                                     <ResponsiveMasonry
                                         columnsCountBreakPoints={{576: 1, 768: 2, 992: 3}}
                                     >
-                                        <Masonry className='w-full'>
+                                        <Masonry>
                                             { this.state.articles.map((post,index) => (
                                                 <div className='p-2' data-aos="fade-up" data-aos-duration="500" key={index}>
                                                     <div className="flex flex-col items-center p-4 bg-gray-100 lg:p-8 rounded-xl">

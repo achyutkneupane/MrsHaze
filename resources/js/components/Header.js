@@ -12,7 +12,7 @@ export class Header extends Component {
       }
     
     componentDidMount() {
-        axios.get("https://mrshaze.me/api/categories")
+        axios.get(window.origin+"/api/categories")
         .then(res => {
           this.setState({
             categories: res.data

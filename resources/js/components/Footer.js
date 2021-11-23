@@ -19,7 +19,7 @@ export class Footer extends Component {
         const email = {
             value: this.state.email
         };
-        axios.post(`https://mrshaze.me/api/subscribe`, { email })
+        axios.post(`window.origin+"/api/subscribe`, { email })
              .then(res => {
                 console.log(res.data);
              })

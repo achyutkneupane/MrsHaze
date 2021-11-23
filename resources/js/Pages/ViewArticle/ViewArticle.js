@@ -30,7 +30,7 @@ export class ViewArticle extends Component {
         this.setState({
             loading: true,
         });
-        axios.get("https://mrshaze.me/api/article/"+newSlug)
+        axios.get(window.origin+"/api/article/"+newSlug)
             .then(res => {
                 this.setState({
                     article: res.data,
@@ -44,7 +44,7 @@ export class ViewArticle extends Component {
         this.setState({
             loading: true,
         });
-        axios.get("https://mrshaze.me/api/articles/without/"+newSlug)
+        axios.get(window.origin+"/api/articles/without/"+newSlug)
             .then(res => {
                 this.setState({
                     others: res.data,
