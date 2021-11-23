@@ -108,5 +108,5 @@
                 }, 100);
             }
         </script>
-    @endpush)
+    @endpush
 </div>

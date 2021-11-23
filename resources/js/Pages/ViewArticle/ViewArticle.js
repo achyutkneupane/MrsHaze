@@ -5,6 +5,7 @@ import moment from 'moment';
 import ReactHtmlParser from 'html-react-parser';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Spinner from '../../components/Spinner';
 
 export class ViewArticle extends Component {
 
@@ -13,7 +14,8 @@ export class ViewArticle extends Component {
         this.state = {
           article: [],
           others: [],
-          content: ''
+          content: '',
+          loading: false
         };
     }
     componentDidMount() {
@@ -25,20 +27,28 @@ export class ViewArticle extends Component {
         }
     }
     axiosCalls(newSlug) {
+        this.setState({
+            loading: true,
+        });
         axios.get("https://mrshaze.me/api/article/"+newSlug)
             .then(res => {
                 this.setState({
                     article: res.data,
-                    content: res.data.content
+                    content: res.data.content,
+                    loading: false
                 });
             })
             // .catch((error) => {
             //     console.log(error);
             // })
+        this.setState({
+            loading: true,
+        });
         axios.get("https://mrshaze.me/api/articles/without/"+newSlug)
             .then(res => {
                 this.setState({
-                    others: res.data
+                    others: res.data,
+                    loading: false
                 });
             })
             // .catch((error) => {
@@ -47,44 +57,53 @@ export class ViewArticle extends Component {
         window.scrollTo(0,0);
     }
     render() {
-        return (
-            <React.Fragment>
-                <Header />
-                {/* {console.log(this.state.slug)} */}
-                <div className='flex justify-center w-screen bg-white'>
-                    <div className='flex flex-col items-center justify-center w-full p-8 text-justify lg:w-8/12 sm:w-10/12'>
-                        <img src={this.state.article.cover} className='object-cover object-center w-full md:w-5/6 max-h-96' loading='lazy' />
-                        <h1 className='pt-5 text-3xl text-center uppercase md:text-5xl text-turq'>{this.state.article.title}</h1>
-                        {/* <div className='pt-2 text-2xl text-center'>{ this.state.article.category.title }</div> */}
-                        <div className='pb-5 text-lg text-center text-gray-500'>{moment(this.state.article.published_at).fromNow()}</div>
-                        <div id='article'>
-                            { ReactHtmlParser(this.state.content) }
+        if(this.state.loading)
+        {
+            return (
+                <Spinner />
+            );
+        }
+        else
+        {
+            return (
+                <React.Fragment>
+                    <Header />
+                    {/* {console.log(this.state.slug)} */}
+                    <div className='flex justify-center w-screen bg-white'>
+                        <div className='flex flex-col items-center justify-center w-full p-8 text-justify lg:w-8/12 sm:w-10/12'>
+                            <img src={this.state.article.cover} className='object-cover object-center w-full md:w-5/6 max-h-96' loading='lazy' />
+                            <h1 className='pt-5 text-3xl text-center uppercase md:text-5xl text-turq'>{this.state.article.title}</h1>
+                            {/* <div className='pt-2 text-2xl text-center'>{ this.state.article.category.title }</div> */}
+                            <div className='pb-5 text-lg text-center text-gray-500'>{moment(this.state.article.published_at).fromNow()}</div>
+                            <div id='article'>
+                                { ReactHtmlParser(this.state.content) }
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='flex flex-col items-center w-full gap-8 py-8 bg-white'>
-                    <h3 className='w-1/2 text-3xl text-center uppercase md:w-1/3 lg:w-1/6 h3title'>More Articles</h3>
-                    <div className='flex flex-col w-full md:flex-row md:flex-wrap md:w-2/3'>
-                        { this.state.others.map((post,index) => (
-                            <div className='w-full p-2 md:w-1/3' key={post.id}>
-                                <div className='flex flex-col items-center justify-start w-full h-full gap-2 text-center'>
-                                    <img src={post.medium_cover} alt={post.title+' - Mrs. Haze'} loading='lazy' className='object-cover object-center max-h-96' />
-                                    <h5 className='text-xl font-bold uppercase'>
-                                        <Link to={'/article/'+post.slug} className='text-turq'>{post.title}</Link>
-                                    </h5>
-                                    <div className='flex flex-row justify-center gap-2'>
-                                        <span className='text-gray-600'>{post.category.title}</span>
-                                        <span className='text-black'>|</span>
-                                        <span className='text-gray-600'>{moment(post.published_at).fromNow()}</span>
+                    <div className='flex flex-col items-center w-full gap-8 py-8 bg-white'>
+                        <h3 className='w-1/2 text-3xl text-center uppercase md:w-1/3 lg:w-1/6 h3title'>More Articles</h3>
+                        <div className='flex flex-col justify-center w-full md:flex-row md:flex-wrap md:w-2/3'>
+                            { this.state.others.map((post,index) => (
+                                <div className='flex justify-center w-full p-2 md:w-1/3' key={post.id}>
+                                    <div className='flex flex-col items-center justify-start w-full h-full gap-2 text-center'>
+                                        <img src={post.medium_cover} alt={post.title+' - Mrs. Haze'} loading='lazy' className='object-cover object-center max-h-96' />
+                                        <h5 className='text-xl font-bold uppercase'>
+                                            <Link to={'/article/'+post.slug} className='text-turq'>{post.title}</Link>
+                                        </h5>
+                                        <div className='flex flex-row justify-center gap-2'>
+                                            <span className='text-gray-600'>{post.category.title}</span>
+                                            <span className='text-black'>|</span>
+                                            <span className='text-gray-600'>{moment(post.published_at).fromNow()}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )) }
+                            )) }
+                        </div>
                     </div>
-                </div>
-                <Footer />
-            </React.Fragment>
-        )
+                    <Footer />
+                </React.Fragment>
+            )
+        }
     }
 }
 

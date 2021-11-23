@@ -69,7 +69,7 @@ export class Footer extends Component {
                                     <button className="flex items-center justify-center px-6 py-2 font-semibold text-center text-white transition duration-500 ease-in-out transform bg-black rounded-lg md:w-1/5 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Subscribe</button>
                                 </form>
                             </div>
-                            {/* <div className="w-full px-8 md:w-1/5 md:order-3">
+                            <div className="w-full px-8 md:w-1/5 md:order-3">
                                 <h1 className="hidden mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font md:block"> Links </h1>
                                 <nav className="flex flex-row mb-10 list-none justify-evenly md:space-y-4 md:flex-col">
                                     <li>
@@ -82,7 +82,7 @@ export class Footer extends Component {
                                         <a className="mr-1 text-sm transition duration-500 ease-in-out transform rounded-sm text-turq focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Songs</a>
                                     </li>
                                 </nav>
-                            </div> */}
+                            </div>
                         </div>
                         <h5 className='w-full pt-4 font-bold text-center uppercase'>
                             Developed by <a href='https://www.linkedin.com/in/achyutkneupane/' target='_blank'>Achyut</a>

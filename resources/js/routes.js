@@ -11,7 +11,7 @@ function Routes() {
                 <Route path='/' exact>
                     <LandingPage />
                 </Route>
-                <Route exact path='/article/:slug' children={({ match }) => <ViewArticle match={match} />} />
+                <Route path='/article/:slug' children={({ match }) => <ViewArticle match={match} />} />
             </Switch>
         </BrowserRouter>
     );
