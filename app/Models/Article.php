@@ -18,7 +18,8 @@ class Article extends Model implements HasMedia
     protected $guarded = [];
     protected $appends = [
         'cover',
-        'medium_cover'
+        'medium_cover',
+        'big_cover'
     ];
     public function sluggable(): array
     {
@@ -42,11 +43,15 @@ class Article extends Model implements HasMedia
     }
     public function getCoverAttribute()
     {
-        return $this->getMedia('cover')->last()->getUrl('big');
+        return $this->getMedia('cover')->last()->getUrl();
     }
     public function getMediumCoverAttribute()
     {
         return $this->getMedia('cover')->last()->getUrl('medium');
+    }
+    public function getBigCoverAttribute()
+    {
+        return $this->getMedia('cover')->last()->getUrl('big');
     }
     public function registerMediaConversions(Media $media = null): void
     {

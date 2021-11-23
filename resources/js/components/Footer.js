@@ -21,7 +21,6 @@ export class Footer extends Component {
         };
         axios.post(`window.origin+"/api/subscribe`, { email })
              .then(res => {
-                console.log(res.data);
              })
              .catch((error) => {
                  console.log("Error");

@@ -11,6 +11,7 @@ import moment from 'moment';
 import excerptHtml from 'excerpt-html';
 import Footer from '../../components/Footer';
 import Spinner from '../../components/Spinner';
+import { Helmet } from 'react-helmet';
 
 class LandingPage extends Component {
 
@@ -83,7 +84,7 @@ class LandingPage extends Component {
                                             { this.state.articles.map((post,index) => (
                                                 <div className='p-2' data-aos="fade-up" data-aos-duration="500" key={index}>
                                                     <div className="flex flex-col items-center p-4 bg-gray-100 lg:p-8 rounded-xl">
-                                                        <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src={ post.medium_cover } alt={ post.title +" - Mrs. Haze" } title={ post.title +" - Mrs. Haze" }/>
+                                                        <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" loading='lazy' src={ post.medium_cover } alt={ post.title +" - Mrs. Haze" } title={ post.title +" - Mrs. Haze" }/>
                                                         <Link to={'/article/'+post.slug} className="mx-auto mb-2 text-2xl font-semibold leading-none tracking-tighter text-center text-black title-font">{ post.title }</Link>
                                                         <div className='flex flex-row justify-center gap-2 my-4 font-bold text-turq'>
                                                             <div>
@@ -108,6 +109,32 @@ class LandingPage extends Component {
                         </div>
                     </div>
                     <Footer />
+                    <Helmet>
+                        <title>Mrs. Haze</title>
+                        <meta name="title" content="Mrs. Haze"/>
+                        <meta name="description" content=""/>
+                        <meta name="keywords" content="Subani Moktan,Mrs. Haze,Mrs. Haze Writes"/>
+                        <meta property="article:published_time" content="2021-11-23 00:00:00"/>
+                        <meta property="article:section" content="website"/>
+                        <meta property="article:author" content="https://www.facebook.com/subani"/>
+                        <meta property="article:publisher" content="https://www.facebook.com/moktan.subani"/>
+                        <meta property="fb:app_id" content="931301841077172"/>
+                        <meta property="fb:pages" content="333706163397393"/>
+
+                        <meta property="og:type" content="website"/>
+                        <meta property="og:url" content={window.location.href}/>
+                        <meta property="og:title" content="Ankita Pun unveils Char Din Char Juni from debut album Maili"/>
+                        <meta property="og:description" content="Ankita Pun, an aspiring artist from Dang is on a journey of her debut album. Check out the first track Char Din Char Juni from her debut album Maili."/>
+                        <meta property="og:image" content=""/>
+                        <meta property="og:site_name" content="Mrs. Haze"/>
+
+                        <meta name="twitter:card" content="summary"/>
+                        <meta name="twitter:url" content={window.location.href}/>
+                        <meta name="twitter:title" content="Mrs. Haze"/>
+                        <meta name="twitter:description" content="Ankita Pun, an aspiring artist from Dang is on a journey of her debut album. Check out the first track Char Din Char Juni from her debut album Maili."/>
+                        <meta name="twitter:image" content=""/>
+                        <meta name="twitter:site" content="@moktansubani"/>
+                    </Helmet>
                 </div>
             );
         }

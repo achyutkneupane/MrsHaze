@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Mrs. Haze"/>
+    <link rel="canonical" href="{{ strtolower(request()->url()) }}" />
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
+    <meta name="robots" content="index, follow"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

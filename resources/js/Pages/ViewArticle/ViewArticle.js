@@ -6,6 +6,7 @@ import ReactHtmlParser from 'html-react-parser';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Spinner from '../../components/Spinner';
+import { Helmet } from 'react-helmet';
 
 export class ViewArticle extends Component {
 
@@ -78,7 +79,7 @@ export class ViewArticle extends Component {
                     {/* {console.log(this.state.slug)} */}
                     <div className='flex justify-center w-screen bg-white'>
                         <div className='flex flex-col items-center justify-center w-full p-8 text-justify lg:w-8/12 sm:w-10/12'>
-                            <img src={this.state.article.cover} className='object-cover object-center w-full md:w-5/6 max-h-96' loading='lazy' />
+                            <img src={this.state.article.big_cover} className='object-cover object-center w-full md:w-5/6 max-h-96' loading='lazy' />
                             <h1 className='pt-5 text-3xl text-center uppercase md:text-5xl text-turq'>{this.state.article.title}</h1>
                             <div className='pt-2 text-2xl text-center'>
                                 <Link to={'/category/'+this.state.category.slug} className="text-black">
@@ -116,6 +117,32 @@ export class ViewArticle extends Component {
                         </div>
                     </div>
                     <Footer />
+                    <Helmet>
+                        <title>{ this.state.article.title+' - Mrs. Haze' }</title>
+                        <meta name="title" content={this.state.article.title+' - Mrs. Haze'} />
+                        <meta name="description" content={this.state.article.description}/>
+                        <meta name="keywords" content={'Subani Moktan,Mrs. Haze,Mrs. Haze Writes,'+this.state.article.title+','+this.state.category.title}/>
+                        <meta property="article:published_time" content={moment(this.state.article.published_at).toISOString()}/>
+                        <meta property="article:section" content="article"/>
+                        <meta property="article:author" content="https://www.facebook.com/subani"/>
+                        <meta property="article:publisher" content="https://www.facebook.com/moktan.subani"/>
+                        <meta property="fb:app_id" content="931301841077172"/>
+                        <meta property="fb:pages" content="333706163397393"/>
+
+                        <meta property="og:type" content="article"/>
+                        <meta property="og:url" content={window.location.href}/>
+                        <meta property="og:title" content={this.state.article.title+' - Mrs. Haze'}/>
+                        <meta property="og:description" content={this.state.article.description}/>
+                        <meta property="og:image" content={this.state.article.cover}/>
+                        <meta property="og:site_name" content="Mrs. Haze"/>
+
+                        <meta name="twitter:card" content="summary"/>
+                        <meta name="twitter:url" content={window.location.href}/>
+                        <meta name="twitter:title" content={this.state.article.title+' - Mrs. Haze'}/>
+                        <meta name="twitter:description" content={this.state.article.description}/>
+                        <meta name="twitter:image" content={this.state.article.cover}/>
+                        <meta name="twitter:site" content="@moktansubani"/>
+                    </Helmet>
                 </React.Fragment>
             )
         }
