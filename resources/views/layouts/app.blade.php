@@ -17,6 +17,12 @@
     @if(request()->routeIs('mrshaze'))
     <div id="mrshaze"></div>
     <script src="{{ asset('js/app.js') }}"></script>
+    @elseif(request()->routeIs('login'))
+    @livewireStyles()
+    @stack('styles')
+        {{ $slot }}
+    @livewireScripts()
+    @stack('scripts')
     @else
     @livewireStyles()
     @stack('styles')

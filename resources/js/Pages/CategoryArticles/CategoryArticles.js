@@ -96,14 +96,14 @@ export class CategoryArticles extends Component {
                         <meta property="og:url" content={window.location.href}/>
                         <meta property="og:title" content={'Category: '+this.state.title+' - Mrs. Haze'}/>
                         <meta property="og:description" content={'Here are the articles under category '+this.state.title+' written by Mrs. Haze.'}/>
-                        <meta property="og:image" content=''/>
+                        <meta property="og:image" content={ CoverPage }/>
                         <meta property="og:site_name" content="Mrs. Haze"/>
 
                         <meta name="twitter:card" content="summary"/>
                         <meta name="twitter:url" content={window.location.href}/>
                         <meta name="twitter:title" content={'Category: '+this.state.title+' - Mrs. Haze'}/>
                         <meta name="twitter:description" content={'Here are the articles under category '+this.state.title+' written by Mrs. Haze.'}/>
-                        <meta name="twitter:image" content=''/>
+                        <meta name="twitter:image" content={ CoverPage }/>
                         <meta name="twitter:site" content="@moktansubani"/>
                     </Helmet>
                 </div>

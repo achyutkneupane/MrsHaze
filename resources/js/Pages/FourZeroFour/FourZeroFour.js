@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import SubaniMoktanMrshaze from '../../../../public/images/Subani-Moktan-mrshaze.png';
+import CoverPage from '../../../../public/images/cover-page.jpg';
 
 export class FourZeroFour extends Component {
     render() {
@@ -41,14 +43,14 @@ export class FourZeroFour extends Component {
                         <meta property="og:url" content={window.location.href}/>
                         <meta property="og:title" content="404 Not Found"/>
                         <meta property="og:description" content="404 Not Found"/>
-                        <meta property="og:image" content=""/>
+                        <meta property="og:image" content={ CoverPage }/>
                         <meta property="og:site_name" content="Mrs. Haze"/>
 
                         <meta name="twitter:card" content="summary"/>
                         <meta name="twitter:url" content={window.location.href}/>
                         <meta name="twitter:title" content="404 Not Found"/>
                         <meta name="twitter:description" content="404 Not Found"/>
-                        <meta name="twitter:image" content=""/>
+                        <meta name="twitter:image" content={ CoverPage }/>
                         <meta name="twitter:site" content="@moktansubani"/>
                     </Helmet>
             </div>

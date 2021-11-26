@@ -7,6 +7,7 @@ import facebook from '../../../../public/images/facebook.svg';
 import instagram from '../../../../public/images/instagram.svg';
 import youtube from '../../../../public/images/youtube.svg';
 import email from '../../../../public/images/email.svg';
+import CoverPage from '../../../../public/images/cover-page.jpg';
 import moment from 'moment';
 import excerptHtml from 'excerpt-html';
 import Footer from '../../components/Footer';
@@ -112,7 +113,7 @@ class LandingPage extends Component {
                     <Helmet>
                         <title>Mrs. Haze</title>
                         <meta name="title" content="Mrs. Haze"/>
-                        <meta name="description" content=""/>
+                        <meta name="description" content="Mrs. Haze in the house, ya'll! (aka Subani Moktan). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking."/>
                         <meta name="keywords" content="Subani Moktan,Mrs. Haze,Mrs. Haze Writes"/>
                         <meta property="article:published_time" content="2021-11-23 00:00:00"/>
                         <meta property="article:section" content="website"/>
@@ -124,15 +125,15 @@ class LandingPage extends Component {
                         <meta property="og:type" content="website"/>
                         <meta property="og:url" content={window.location.href}/>
                         <meta property="og:title" content="Ankita Pun unveils Char Din Char Juni from debut album Maili"/>
-                        <meta property="og:description" content="Ankita Pun, an aspiring artist from Dang is on a journey of her debut album. Check out the first track Char Din Char Juni from her debut album Maili."/>
-                        <meta property="og:image" content=""/>
+                        <meta property="og:description" content="Mrs. Haze in the house, ya'll! (aka Subani Moktan). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking."/>
+                        <meta property="og:image" content={ CoverPage }/>
                         <meta property="og:site_name" content="Mrs. Haze"/>
 
                         <meta name="twitter:card" content="summary"/>
                         <meta name="twitter:url" content={window.location.href}/>
                         <meta name="twitter:title" content="Mrs. Haze"/>
-                        <meta name="twitter:description" content="Ankita Pun, an aspiring artist from Dang is on a journey of her debut album. Check out the first track Char Din Char Juni from her debut album Maili."/>
-                        <meta name="twitter:image" content=""/>
+                        <meta name="twitter:description" content="Mrs. Haze in the house, ya'll! (aka Subani Moktan). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking."/>
+                        <meta name="twitter:image" content={ CoverPage }/>
                         <meta name="twitter:site" content="@moktansubani"/>
                     </Helmet>
                 </div>

@@ -62,14 +62,19 @@ export class Footer extends Component {
                                 </span>
                                 <h2 className="mt-4 mb-4 text-xs font-semibold tracking-widest text-center text-black uppercase md:mt-1 title-font md:text-left">© Mrs. Haze<br />All rights reserved.</h2>
                             </div>
-                            <div className="flex flex-col justify-center w-full px-8 text-center align-center md:w-3/5 md:order-2">
+                            <div className="flex flex-col justify-center w-full gap-4 px-8 text-center align-center md:w-3/5 md:order-2">
+                                <h3 className="hidden mb-8 text-lg tracking-widest text-center text-gray-700 title-font md:block">
+                                    <b>Mrs. Haze</b> in the house, ya'll! (aka <b>Subani Moktan</b>). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking.
+                                </h3>
                                 <form onSubmit={this.handleSubmit} className='flex flex-col items-center justify-center w-full text-center md:flex-row align-center'>
                                     <input type="text" placeholder='Enter your e-mail to subscribe to Newsletter' className="w-full px-4 py-2 mx-auto mb-4 text-base text-black transition ease-in-out transform bg-white rounded-lg md:mr-4 md:w-4/5 duration-650 focus:outline-none focus:border-turq sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" name='email' onChange={this.handleChange} />
                                     <button className="flex items-center justify-center px-6 py-2 font-semibold text-center text-white transition duration-500 ease-in-out transform bg-black rounded-lg md:w-1/5 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Subscribe</button>
                                 </form>
                             </div>
                             <div className="w-full px-8 md:w-1/5 md:order-3">
-                                <h1 className="hidden mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font md:block"> Links </h1>
+                                <h3 className="hidden mb-8 text-xs tracking-widest text-justify text-black uppercase title-font md:block">
+                                    Link
+                                </h3>
                                 <nav className="flex flex-row mb-10 list-none justify-evenly md:space-y-4 md:flex-col">
                                     <li>
                                         <a className="mr-1 text-sm transition duration-500 ease-in-out transform rounded-sm text-turq focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Home</a>
