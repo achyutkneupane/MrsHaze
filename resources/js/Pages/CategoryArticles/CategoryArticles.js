@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Spinner from '../../components/Spinner';
+import CoverPage from '../../../../public/images/cover-page.jpg';
 
 export class CategoryArticles extends Component {
 

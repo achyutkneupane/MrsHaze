@@ -6,7 +6,8 @@ export class Footer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          email: []
+          email: [],
+          subscribed: false
         };
       }
       
@@ -14,13 +15,17 @@ export class Footer extends Component {
         this.setState({ email: event.target.value });
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
         const email = {
             value: this.state.email
         };
-        axios.post(`window.origin+"/api/subscribe`, { email })
+        await axios.post(window.origin+"/api/subscribe",email )
              .then(res => {
+                this.setState({
+                    email: [],
+                    subscribed: true
+                })
              })
              .catch((error) => {
                  console.log("Error");
@@ -67,7 +72,8 @@ export class Footer extends Component {
                                     <b>Mrs. Haze</b> in the house, ya'll! (aka <b>Subani Moktan</b>). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking.
                                 </h3>
                                 <form onSubmit={this.handleSubmit} className='flex flex-col items-center justify-center w-full text-center md:flex-row align-center'>
-                                    <input type="text" placeholder='Enter your e-mail to subscribe to Newsletter' className="w-full px-4 py-2 mx-auto mb-4 text-base text-black transition ease-in-out transform bg-white rounded-lg md:mr-4 md:w-4/5 duration-650 focus:outline-none focus:border-turq sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" name='email' onChange={this.handleChange} />
+                                    { this.state.subscribed ? <span className='text-green-600'>Subscribed!</span> : "" }
+                                    <input type="text" placeholder='Enter your e-mail to subscribe to Newsletter' className="w-full px-4 py-2 mx-auto mb-4 text-base text-black transition ease-in-out transform bg-white rounded-lg md:mr-4 md:w-4/5 duration-650 focus:outline-none focus:border-turq sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" name='email' value={this.state.email} onChange={this.handleChange} />
                                     <button className="flex items-center justify-center px-6 py-2 font-semibold text-center text-white transition duration-500 ease-in-out transform bg-black rounded-lg md:w-1/5 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Subscribe</button>
                                 </form>
                             </div>

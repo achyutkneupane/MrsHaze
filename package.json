@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "@offensichtbar-codestock/react-flex-masonry-grid": "^1.0.8",
+        "aos": "^2.3.4",
         "excerpt-html": "^1.2.2",
         "html-react-parser": "^1.4.0",
         "moment": "^2.29.1",

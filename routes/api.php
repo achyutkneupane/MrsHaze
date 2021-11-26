@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Mail\subscribe;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +28,10 @@ Route::get('/articles/without/{slug}', [ArticleController::class,'others'])->nam
 Route::get('/categories', [CategoryController::class,'index'])->name('categories.all');
 Route::get('/category/{slug}', [CategoryController::class,'show'])->name('category.show');
 Route::post('/subscribe',function(Request $request) {
-    $email = collect($request->email)['value'];
-    // return $email;
+    $email = collect($request->value)->first();
     Subscriber::create([
         'email' => $email,
     ]);
+    Mail::to($email)
+        ->send(new subscribe($email));
 });
