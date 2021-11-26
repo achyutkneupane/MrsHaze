@@ -71,10 +71,12 @@ export class Footer extends Component {
                                 <h3 className="hidden mb-8 text-lg tracking-widest text-center text-gray-700 title-font md:block">
                                     <b>Mrs. Haze</b> in the house, ya'll! (aka <b>Subani Moktan</b>). Join me as we unravel the mystery of why my brain works at the speed of light: constantly thinking to the point of overthinking—and overthinking overthinking.
                                 </h3>
-                                <form onSubmit={this.handleSubmit} className='flex flex-col items-center justify-center w-full text-center md:flex-row align-center'>
-                                    { this.state.subscribed ? <span className='text-green-600'>Subscribed!</span> : "" }
-                                    <input type="text" placeholder='Enter your e-mail to subscribe to Newsletter' className="w-full px-4 py-2 mx-auto mb-4 text-base text-black transition ease-in-out transform bg-white rounded-lg md:mr-4 md:w-4/5 duration-650 focus:outline-none focus:border-turq sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" name='email' value={this.state.email} onChange={this.handleChange} />
-                                    <button className="flex items-center justify-center px-6 py-2 font-semibold text-center text-white transition duration-500 ease-in-out transform bg-black rounded-lg md:w-1/5 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Subscribe</button>
+                                <form onSubmit={this.handleSubmit} className='flex flex-col items-center justify-center w-full gap-4 text-center align-center'>
+                                    { this.state.subscribed ? <div className='text-xl font-bold text-green-600 uppercase'>Subscribed!</div> : "" }
+                                    <div className='flex flex-col items-center justify-center w-full text-center md:flex-row align-center'>
+                                        <input type="text" placeholder='Enter your e-mail to subscribe to Newsletter' className="w-full px-4 py-2 mx-auto mb-4 text-base text-black transition ease-in-out transform bg-white rounded-lg md:mr-4 md:w-4/5 duration-650 focus:outline-none focus:border-turq sm:mb-0 focus:bg-white focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" name='email' value={this.state.email} onChange={this.handleChange} required />
+                                        <button className="flex items-center justify-center px-6 py-2 font-semibold text-center text-white transition duration-500 ease-in-out transform bg-black rounded-lg md:w-1/5 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">Subscribe</button>
+                                    </div>
                                 </form>
                             </div>
                             <div className="w-full px-8 md:w-1/5 md:order-3">

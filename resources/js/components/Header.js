@@ -41,7 +41,7 @@ export class Header extends Component {
                         {/* <div className="mt-3 overflow-y-auto whitespace-nowrap scroll-hidden sticky-top"> */}
                             <ul className="flex items-center justify-center list-none">
                             { this.state.categories.map((category,index) => (
-                                <li>
+                                <li key={index}>
                                     <Link to={ '/category/'+category.slug }
                                         className="px-4 py-1 mr-1 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black ">
                                             {category.title}
