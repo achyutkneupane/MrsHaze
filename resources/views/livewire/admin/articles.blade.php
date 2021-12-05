@@ -45,7 +45,14 @@
                         <span>{{ $article->category->title }}</span>
                     </td>
                     <td class="px-16 py-2">
-                        <span>Buttons</span>
+                        <div class='flex justify-center gap-4'>
+                            <a class='px-3 py-2 text-black bg-yellow-400 border rounded' href='{{ route('admin.articles.edit',$article->id) }}'>
+                                Edit
+                            </a>
+                            <a class='px-3 py-2 text-black border rounded bg-turq' href='/article/{{ $article->slug }}' target="_blank">
+                                View Article
+                            </a>
+                        </div>
                     </td>
                 </tr>
             @endforeach

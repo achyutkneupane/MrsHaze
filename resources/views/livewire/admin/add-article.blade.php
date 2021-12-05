@@ -17,11 +17,21 @@
                         Title
                     </p>
                     <input type='text' class='w-full px-4 py-2 bg-white border rounded' placeholder="Enter Article Title" wire:model='articleTitle'>
+                    @error('articleTitle')
+                    <div class='font-bold text-bsred'>
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class='w-full' wire:ignore>
-                    <textarea id='textArea' wire:model='textArea'>
+                    <textarea id='articleContent' wire:model='articleContent'>
                     </textarea>
                 </div>
+                @error('articleContent')
+                <div class='font-bold text-bsred'>
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
         </div>
         <div class='w-full md:w-1/3'>
@@ -61,11 +71,21 @@
                         <input x-ref="tag-input" placeholder="Add tags...">
                     </div>
                 </div>
+                @error('articleTags')
+                <div class='font-bold text-bsred'>
+                    {{ $message }}
+                </div>
+                @enderror
                 <div class='w-full'>
                     <p class='text-lg'>
                         SEO Description
                     </p>
                     <textarea class='w-full px-4 py-2 bg-white border rounded' rows='5' placeholder="Enter SEO Description" wire:model='seoDescription'></textarea>
+                    @error('seoDescription')
+                    <div class='font-bold text-bsred'>
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class='w-full'>
                     <p class='text-lg'>
@@ -77,44 +97,58 @@
                         <option value="{{ $category->id }}">{{ $category->title }}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class='w-full' wire:ignore>
-                    <p class='text-lg'>
-                        Featured Image
-                    </p>
-                    <div
-                        class=""
-                        x-data="{
-                            pond: null
-                        }"
-
-                        x-init="
-                            FilePond.setOptions({
-                                acceptedFileTypes:
-                                [
-                                    'image/png', 'image/jpeg'
-                                ],
-                                allowMultiple: false,
-                                maxFileSize: '4MB'
-                            });
-                            const filepond = FilePond.create(
-                                $refs.filepond
-                            );
-                            pond = filepond;
-                            pond.setOptions({
-                                server: {
-                                    process:(fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-                                        console.log(file.name);
-                                        @this.upload('featuredImage', file, load, error, progress);
-                                    },
-                                }
-                            });
-                        "
-
-                    >
-                        <input type="file" x-ref="filepond" wire:model='featuredImage'>
+                    @error('category')
+                    <div class='font-bold text-bsred'>
+                        {{ $message }}
                     </div>
-                    {{ $featuredImage }}
+                    @enderror
+                </div>
+                <div class='w-full'>
+                    <div class='w-full' wire:ignore>
+                        <p class='text-lg'>
+                            Featured Image
+                        </p>
+                        <div
+                            class=""
+                            x-data="{
+                                pond: null
+                            }"
+    
+                            x-init="
+                                FilePond.setOptions({
+                                    acceptedFileTypes:
+                                    [
+                                        'image/png', 'image/jpeg'
+                                    ],
+                                    allowMultiple: false,
+                                    maxFileSize: '4MB'
+                                });
+                                const filepond = FilePond.create(
+                                    $refs.filepond
+                                );
+                                pond = filepond;
+                                pond.setOptions({
+                                    server: {
+                                        process:(fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
+                                            console.log(file.name);
+                                            @this.upload('featuredImage', file, load, error, progress);
+                                        },
+                                    }
+                                });
+                            "
+    
+                        >
+                            <input type="file" x-ref="filepond" wire:model='featuredImage'>
+                        </div>
+                    </div>
+                    @if($featuredImage)
+                        <img src='{{ $featuredImage->temporaryUrl() }}' />
+                    @endif
+                    @error('featuredImage')
+                        <div class='font-bold text-bsred'>
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="flex flex-col w-full gap-2">
                     <button class='w-full p-2 font-bold text-white uppercase border rounded-lg border-turq hover:text-black bg-turq hover:border-black' wire:click='publishArticle'>Publish</button>
@@ -135,7 +169,7 @@
     <script src="https://cdn.tiny.cloud/1/p47paciinlfiov1oumn6ftva8g3x4qwt5z2z3258ayqs6lf4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-        selector: 'textarea#textArea',
+        selector: 'textarea#articleContent',
         height: 600,
         menubar: false,
         plugins: [
@@ -152,7 +186,7 @@
                 editor.save();
             });
             editor.on('change', function (e) {
-                @this.set('textArea', editor.getContent());
+                @this.set('articleContent', editor.getContent());
             });
         },
     });

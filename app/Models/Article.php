@@ -43,15 +43,15 @@ class Article extends Model implements HasMedia
     }
     public function getCoverAttribute()
     {
-        return $this->getMedia('cover')->last()->getUrl();
+        return $this->getMedia('cover')->count() ? $this->getMedia('cover')->last()->getUrl() : null;
     }
     public function getMediumCoverAttribute()
     {
-        return $this->getMedia('cover')->last()->getUrl('medium');
+        return $this->getMedia('cover')->count() ? $this->getMedia('cover')->last()->getUrl('medium') : null;
     }
     public function getBigCoverAttribute()
     {
-        return $this->getMedia('cover')->last()->getUrl('big');
+        return $this->getMedia('cover')->count() ? $this->getMedia('cover')->last()->getUrl('big') : null;
     }
     public function registerMediaConversions(Media $media = null): void
     {

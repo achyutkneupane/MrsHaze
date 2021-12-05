@@ -13,14 +13,23 @@ class AddArticle extends Component
 {
     use WithFileUploads;
 
-    public $textArea,$articleTags,$articleTitle,$articleSlug,$seoDescription,$category='',$categories,$featuredImage,$tags;
+    public $articleContent,$articleTags,$articleTitle,$articleSlug,$seoDescription,$category='',$categories,$featuredImage,$tags;
     public $attributes;
     public function publishArticle()
     {
+        // dd($this->featuredImage);
+        $this->validate([
+            'articleTitle' => 'required',
+            'seoDescription' => 'required',
+            'articleContent' => 'required',
+            'featuredImage' => 'required',
+            'articleTags' => 'required',
+            'category' => 'required'
+        ]);
         $article = Article::create([
             'title' => $this->articleTitle,
             'description' => $this->seoDescription,
-            'content' => $this->textArea,
+            'content' => $this->articleContent,
             'published_at' => now()
         ]);
         foreach(json_decode($this->articleTags) as $tag)
@@ -45,6 +54,8 @@ class AddArticle extends Component
                     ->usingFileName($path)
                     ->usingName($path)
                     ->toMediaCollection('cover');
+        $article->save();
+        return redirect()->to('/article/'.$this->articleSlug);
     }
     public function render()
     {
