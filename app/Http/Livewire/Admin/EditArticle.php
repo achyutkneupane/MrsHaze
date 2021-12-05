@@ -13,12 +13,13 @@ class EditArticle extends Component
 {
     use WithFileUploads;
 
-    public $article;
+    public $article,$articleID;
     public $articleContent,$articleTags,$articleTitle,$articleSlug,$seoDescription,$category='',$categories,$featuredImage,$tags;
     public $attributes;
     public function mount($id)
     {
         $this->article = Article::with('media','category','tags')->find($id);
+        $this->articleID = $this->article->id;
         $this->articleContent = $this->article->content;
         $this->articleTitle = $this->article->title;
         $this->articleSlug = $this->article->slug;
@@ -37,16 +38,15 @@ class EditArticle extends Component
             'articleTitle' => 'required',
             'seoDescription' => 'required',
             'articleContent' => 'required',
-            'featuredImage' => 'required',
             'articleTags' => 'required',
             'category' => 'required'
         ]);
-        $article = Article::create([
-            'title' => $this->articleTitle,
-            'description' => $this->seoDescription,
-            'content' => $this->articleContent,
-            'published_at' => now()
-        ]);
+        $article = Article::find($this->articleID);
+        $article->title = $this->articleTitle;
+        $article->description = $this->seoDescription;
+        $article->content = $this->articleContent;
+        $article->published_at = now();
+        $tagsToAttach = collect();
         foreach(json_decode($this->articleTags) as $tag)
         {
             if(!isset($tag->id))
@@ -54,22 +54,27 @@ class EditArticle extends Component
                 $newTag = Tag::create([
                     'title'=>$tag->value,
                 ]);
-                $article->tags()->attach($newTag->id);
+                $tagsToAttach->push($newTag->id);
             }
             else
             {
-                $article->tags()->attach($tag->id);
+                $tagsToAttach->push($tag->id);
             }
         }
+        $article->tags()->sync($tagsToAttach);
         $article->writer()->associate(1);
         $article->category()->associate($this->category);
-        $extension = $this->featuredImage->extension();
-        $path = 'uploads/'.$this->articleSlug.'-'.now()->timestamp.'.'.$extension;
-        $article->addMedia($this->featuredImage->getRealPath())
-                    ->usingFileName($path)
-                    ->usingName($path)
-                    ->toMediaCollection('cover');
+        if($this->featuredImage)
+        {
+            $extension = $this->featuredImage->extension();
+            $path = 'uploads/'.$this->articleSlug.'-'.now()->timestamp.'.'.$extension;
+            $article->addMedia($this->featuredImage->getRealPath())
+                        ->usingFileName($path)
+                        ->usingName($path)
+                        ->toMediaCollection('cover');
+        }
         $article->save();
+        return redirect()->to('/article/'.$this->articleSlug);
     }
     public function render()
     {

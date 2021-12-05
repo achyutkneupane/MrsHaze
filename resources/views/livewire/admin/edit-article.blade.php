@@ -141,8 +141,10 @@
                             <input type="file" x-ref="filepond" wire:model='featuredImage'>
                         </div>
                     </div>
-                    @if($featuredImage || $article->cover)
-                        <img src='{{ $article->cover ? $article->cover : $featuredImage->temporaryUrl() }}' />
+                    @if($featuredImage)
+                        <img src='{{ $featuredImage->temporaryUrl() }}' />
+                    @elseif($article->cover)
+                        <img src='{{ $article->cover }}' />
                     @endif
                     @error('featuredImage')
                         <div class='font-bold text-bsred'>
@@ -151,7 +153,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col w-full gap-2">
-                    <button class='w-full p-2 font-bold text-white uppercase border rounded-lg border-turq hover:text-black bg-turq hover:border-black' wire:click='publishArticle'>Publish</button>
+                    <button class='w-full p-2 font-bold text-white uppercase border rounded-lg border-turq hover:text-black bg-turq hover:border-black' wire:click='publishArticle'>Update</button>
                     <button class='w-full p-2 font-bold uppercase bg-white border rounded-lg text-turq border-turq hover:text-black hover:border-black' wire:click='draftArticle'>Save as Draft</button>
                 </div>
             </div>
