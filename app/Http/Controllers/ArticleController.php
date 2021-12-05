@@ -48,7 +48,10 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        return response()->json(Article::with('media','category','tags')->where('slug',$slug)->first());
+        $article = Article::with('media','category','tags')->where('slug',$slug)->first();
+        $article->views += 1;
+        $article->save();
+        return response()->json($article);
     }
 
     /**
