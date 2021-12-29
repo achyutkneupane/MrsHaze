@@ -36,6 +36,6 @@ Route::prefix('/admin')->middleware('auth')->group(function() {
     Route::get('/tags',Tags::class)->name('admin.tags');
 });
 Route::get('/login', Login::class)->middleware('guest')->name('login');
-Route::get( '/{any}', function () {
-    return view('layouts.app');
-})->where('any', '.*')->name('mrshaze');
+Route::get( '/', function () {
+    return view('welcome');
+})->name('mrshaze');
