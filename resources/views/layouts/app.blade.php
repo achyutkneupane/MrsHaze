@@ -15,8 +15,7 @@
 </head>
 <body class='{{ request()->routeIs('mrshaze') ? 'bodyView' : 'bg-gray-100' }}'>
     @if(request()->routeIs('mrshaze'))
-    <div id="mrshaze"></div>
-    <script src="{{ asset('js/app.js') }}"></script>
+        @include('welcome')
     @elseif(request()->routeIs('login'))
     @livewireStyles()
     @stack('styles')
