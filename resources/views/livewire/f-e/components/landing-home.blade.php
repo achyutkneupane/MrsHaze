@@ -5,8 +5,7 @@
             <div class="flex justify-end w-full h-full bgOpacityTurquise lg:bgTurquise">
                 <div
                     class="flex flex-col items-center justify-center w-full gap-8 px-4 text-black xl:w-1/2 lg:w-2/5 xl:mx-16 lg:mx-2">
-                    <h1 class="text-center text-8xl lg:text-9xl logoText" data-aos="fade-up" data-aos-delay="0"
-                        data-aos-duration="1000" data-aos-offset="0">
+                    <h1 class="text-center text-8xl lg:text-9xl logoText">
                         Mrs. Haze
                     </h1>
                     <div class="flex flex-row justify-center" data-aos="fade-up" data-aos-delay="500"

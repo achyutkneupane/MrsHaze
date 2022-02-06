@@ -19,12 +19,12 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class='bodyView'>
-    @if(request()->routeIs('admin'))
+<body class='{{ request()->routeIs('admin*') ? 'bg-gray-100' : 'bodyView' }}'>
+    @if(request()->routeIs('admin*'))
         @livewireStyles()
         @stack('styles')
         <div class="flex h-screen overflow-hidden rounded-lg">
-            {{-- @include('layouts.sidebar') --}}
+            @include('layouts.sidebar')
             <div class="flex flex-col flex-1 w-0 overflow-hidden">
                 <main class="relative flex-1 overflow-y-auto focus:outline-none">
                     <div class="p-6">

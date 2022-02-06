@@ -88,12 +88,14 @@
                     <nav class="flex flex-row mb-10 list-none justify-evenly lg:space-y-4 lg:flex-col">
                         <li>
                             <a
+                                href="{{ route('landing-page') }}"
                                 class="mr-1 text-sm transition duration-500 ease-in-out transform rounded-sm text-turq focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
                                 Home
                             </a>
                         </li>
                         <li>
                             <a
+                                href="{{ route('all-songs') }}"
                                 class="mr-1 text-sm transition duration-500 ease-in-out transform rounded-sm text-turq focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
                                 Songs
                             </a>

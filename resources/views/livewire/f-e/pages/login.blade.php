@@ -1,6 +1,6 @@
 <div class='w-screen h-screen bodyView'>
     <div class='w-full h-full bg-center bg-no-repeat bg-cover lg:bg-left lg:bg-contain bgImage'>
-        <div class='flex justify-end w-full h-full bg-opacity-60 bg-turq lg:bg-opacity-0'>
+        <div class="flex justify-end w-full h-full bgOpacityTurquise lg:bgTurquise">
             <div class='flex flex-col items-center justify-center w-full gap-4 px-4 text-black xl:w-1/2 lg:w-2/5 xl:mx-16 lg:mx-2'>
                 <div class='flex flex-col w-2/3 gap-2'>
                     <label for='email' class='text-lg font-bold uppercase'>Email Address</label>
@@ -33,7 +33,7 @@
 @push('styles')
 <style>
     .bgImage {
-        background-image: url("{{ asset('images/Subani-Moktan-mrshaze.png') }}")
+        background-image: url("{{ asset('assets/Subani-Moktan-mrshaze.webp') }}")
     }
 </style>
 @endpush

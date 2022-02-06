@@ -11,7 +11,7 @@ class ViewArticle extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
-        $this->post = Article::where('slug',$slug)->first();
+        $this->post = Article::where('slug',$slug)->firstOrFail();
         $this->content = explode("\n", $this->post->content);
     }
     public function render()

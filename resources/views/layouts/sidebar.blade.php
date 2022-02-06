@@ -4,7 +4,7 @@
             <div class="flex flex-col items-center flex-shrink-0 px-4">
                 <a href="/" class="px-8 text-left focus:outline-none">
                     <h2
-                        class="block p-2 text-5xl font-medium tracking-tighter text-black transition duration-500 ease-in-out transform cursor-pointer hover:text-white logoText">
+                        class="block p-2 text-5xl font-medium tracking-tighter text-black transition duration-500 ease-in-out transform cursor-pointer logoText">
                             Mrs. Haze
                         </h2>
                 </a>
