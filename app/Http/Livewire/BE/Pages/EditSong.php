@@ -26,7 +26,7 @@ class EditSong extends Component
         $this->noodle = $this->song->noodle;
         $this->spotify = $this->song->spotify;
     }
-    public function publishArticle()
+    public function updateSong()
     {
         $this->validate([
             'songTitle' => 'required',

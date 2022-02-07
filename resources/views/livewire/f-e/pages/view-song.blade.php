@@ -1,5 +1,5 @@
 <div class="bodyView">
-    <Head>
+    @push('meta_tags')
         <title>{{ $song->title }} || Subani Moktan</title>
         <meta name="title" content="{{ $song->title }} || Subani Moktan" />
         <meta name="description" content={{ $song->seo_text }} />
@@ -15,8 +15,8 @@
         <meta name="twitter:title" content="{{ $song->title }} || Subani Moktan" />
         <meta name="twitter:description" content={{ $song->seo_text }} />
         <meta name="twitter:image" content={{ $song->cover }} />
-    </Head>
-    <div class="flex flex-col w-screen h-screen">
+    @endpush
+    <div class="flex flex-col w-screen h-full md:h-screen">
         @livewire('f-e.components.navbar')
         <div class="flex flex-col-reverse gap-4 p-4 divide-x-8 divide-black md:overflow-y-scroll md:flex-row">
             <div
@@ -63,14 +63,20 @@
             <div
                 class="flex flex-col justify-center w-full h-full gap-2 bg-white shadow md:overflow-scroll md:w-2/3 rounded-xl shadow-black md:shadow-none">
                 <div class="flex flex-col items-center h-full gap-2 px-2 pt-8">
-                    <iframe src="https://www.youtube.com/embed/{{ $song->youtube }}?autoplay=1" height="100%" class="w-full h-72 md:h-full md:w-4/5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/{{ $song->youtube }}?autoplay=1" height="100%"
+                        class="w-full h-72 md:h-full md:w-4/5" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen=""></iframe>
                     <div class="flex flex-col items-center gap-2 py-5">
-                        <div class="text-3xl font-bold text-center uppercase md:text-5xl text-turq">{{ $song->title }}</div>
+                        <div class="text-3xl font-bold text-center uppercase md:text-5xl text-turq">
+                            {{ $song->title }}</div>
                         <div class="flex justify-center w-full gap-2 text-gray-600 md:w-1/2">
-                            <span>Released <b>{{ \Carbon\Carbon::parse($song->released_at)->diffForHumans() }}</b></span>
-                            @if(!empty($song->noodle))
-                            <span class='font-bold'> | </span>
-                            <span><a href='https://noodlerex.com.np/songs/{{ $song->noodle }}' class='text-red-700' target="_blank">Buy at <b>Noodle</b></a></span>
+                            <span>Released
+                                <b>{{ \Carbon\Carbon::parse($song->released_at)->diffForHumans() }}</b></span>
+                            @if (!empty($song->noodle))
+                                <span class='font-bold'> | </span>
+                                <span><a href='https://noodlerex.com.np/songs/{{ $song->noodle }}'
+                                        class='text-red-700' target="_blank">Buy at <b>Noodle</b></a></span>
                             @endif
                         </div>
                         <div
@@ -82,4 +88,5 @@
             </div>
         </div>
     </div>
+    @livewire('f-e.components.footer')
 </div>

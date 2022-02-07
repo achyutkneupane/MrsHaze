@@ -146,7 +146,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col w-full gap-2">
-                    <button class='w-full p-2 font-bold text-white uppercase border rounded-lg border-turq hover:text-black bg-turq hover:border-black' wire:click='publishArticle'>Update</button>
+                    <button class='w-full p-2 font-bold text-white uppercase border rounded-lg border-turq hover:text-black bg-turq hover:border-black' wire:click='updateSong'>Update</button>
                     <button class='w-full p-2 font-bold uppercase bg-white border rounded-lg text-turq border-turq hover:text-black hover:border-black' wire:click='draftArticle'>Save as Draft</button>
                 </div>
             </div>

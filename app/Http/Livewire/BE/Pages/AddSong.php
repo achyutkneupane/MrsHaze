@@ -14,7 +14,7 @@ class AddSong extends Component
     public $song,$songID;
     public $songDescription,$releasedAt,$songTitle,$songSlug,$seoText,$featuredImage;
     public $youtube,$noodle,$spotify;
-    public function publishArticle()
+    public function publishSong()
     {
         $this->validate([
             'songTitle' => 'required',
