@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Livewire\BE\Pages\AddArticle;
+use App\Http\Livewire\BE\Pages\AddSong;
 use App\Http\Livewire\BE\Pages\Articles;
 use App\Http\Livewire\BE\Pages\Categories;
 use App\Http\Livewire\BE\Pages\EditArticle;
+use App\Http\Livewire\BE\Pages\EditSong;
 use App\Http\Livewire\BE\Pages\Home;
+use App\Http\Livewire\BE\Pages\Songs;
 use App\Http\Livewire\BE\Pages\Tags;
 use App\Http\Livewire\FE\Pages\AllSongs;
 use App\Http\Livewire\FE\Pages\LandingPage;
@@ -34,9 +37,16 @@ Route::get('/song/{slug}', ViewSong::class)->name('view-song');
 
 Route::prefix('/admin')->middleware('auth')->group(function() {
     Route::get('/',Home::class)->name('admin.home');
+    // Articles
     Route::get('/articles',Articles::class)->name('admin.articles');
     Route::get('/articles/add',AddArticle::class)->name('admin.articles.add');
     Route::get('/articles/edit/{id}',EditArticle::class)->name('admin.articles.edit');
+
+    //Songs
+    Route::get('/songs',Songs::class)->name('admin.songs');
+    Route::get('/songs/add',AddSong::class)->name('admin.songs.add');
+    Route::get('/songs/edit/{id}',EditSong::class)->name('admin.songs.edit');
+
     Route::get('/categories',Categories::class)->name('admin.categories');
     Route::get('/tags',Tags::class)->name('admin.tags');
 });

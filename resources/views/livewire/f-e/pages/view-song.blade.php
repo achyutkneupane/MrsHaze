@@ -1,5 +1,4 @@
 <div class="bodyView">
-
     <Head>
         <title>{{ $song->title }} || Subani Moktan</title>
         <meta name="title" content="{{ $song->title }} || Subani Moktan" />
@@ -69,8 +68,10 @@
                         <div class="text-3xl font-bold text-center uppercase md:text-5xl text-turq">{{ $song->title }}</div>
                         <div class="flex justify-center w-full gap-2 text-gray-600 md:w-1/2">
                             <span>Released <b>{{ \Carbon\Carbon::parse($song->released_at)->diffForHumans() }}</b></span>
+                            @if(!empty($song->noodle))
                             <span class='font-bold'> | </span>
                             <span><a href='https://noodlerex.com.np/songs/{{ $song->noodle }}' class='text-red-700' target="_blank">Buy at <b>Noodle</b></a></span>
+                            @endif
                         </div>
                         <div
                             class="w-3/4 overflow-y-scroll text-center text-gray-800 lg:h-40 first-letter:text-4xl first-letter:md:text-7xl first-letter:float-left first-letter:text-black first-letter:font-bold">

@@ -19,7 +19,7 @@ class CreateSongsTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->text('seo_text');
-            $table->dateTime('released_at');
+            $table->date('released_at');
             $table->string('youtube')->nullable();
             $table->string('noodle')->nullable();
             $table->string('spotify')->nullable();
