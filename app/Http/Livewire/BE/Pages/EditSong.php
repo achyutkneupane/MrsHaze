@@ -2,13 +2,9 @@
 
 namespace App\Http\Livewire\BE\Pages;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Models\Song;
-use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Str;
 
 class EditSong extends Component
 {
@@ -17,7 +13,6 @@ class EditSong extends Component
     public $song,$songID;
     public $songDescription,$releasedAt,$songTitle,$songSlug,$seoText,$featuredImage;
     public $youtube,$noodle,$spotify;
-    public $attributes;
     public function mount($id)
     {
         $this->song = Song::with('media')->find($id);

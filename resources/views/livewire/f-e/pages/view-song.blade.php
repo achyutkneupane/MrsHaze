@@ -9,8 +9,8 @@
 
         <meta property="og:type" content="article" />
         <meta property="og:title" content="{{ $song->title }} || Subani Moktan" />
-        <meta property="og:description" content={{ $song->seo_text }} />
-        <meta property="og:image" content={{ $song->cover }} />
+        <meta property="og:description" content="{{ $song->seo_text }}" />
+        <meta property="og:image" content="{{ $song->cover }}" />
 
         <meta name="twitter:title" content="{{ $song->title }} || Subani Moktan" />
         <meta name="twitter:description" content={{ $song->seo_text }} />

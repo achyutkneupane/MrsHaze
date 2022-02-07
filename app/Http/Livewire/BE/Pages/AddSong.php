@@ -2,66 +2,50 @@
 
 namespace App\Http\Livewire\BE\Pages;
 
-use App\Models\Article;
-use App\Models\Category;
-use App\Models\Tag;
-use Livewire\Component;
+use App\Models\Song;
 use Illuminate\Support\Str;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AddSong extends Component
 {
     use WithFileUploads;
 
-    public $articleContent,$articleTags,$articleTitle,$articleSlug,$seoDescription,$category='',$categories,$featuredImage,$tags;
-    public $attributes;
+    public $song,$songID;
+    public $songDescription,$releasedAt,$songTitle,$songSlug,$seoText,$featuredImage;
+    public $youtube,$noodle,$spotify;
     public function publishArticle()
     {
-        // dd($this->featuredImage);
         $this->validate([
-            'articleTitle' => 'required',
-            'seoDescription' => 'required',
-            'articleContent' => 'required',
-            'featuredImage' => 'required',
-            'articleTags' => 'required',
-            'category' => 'required'
+            'songTitle' => 'required',
+            'seoText' => 'required',
+            'songDescription' => 'required',
+            'songSlug' => 'required',
+            'releasedAt' => 'required',
+            'youtube' => 'required'
         ]);
-        $article = Article::create([
-            'title' => $this->articleTitle,
-            'description' => $this->seoDescription,
-            'content' => $this->articleContent,
-            'published_at' => now()
+        $song = Song::create([
+            'title' => $this->songTitle,
+            'seo_text' => $this->seoText,
+            'description' => $this->songDescription,
+            'slug' => $this->songSlug,
+            'released_at' => $this->releasedAt,
+            'youtube' => $this->youtube,
+            'noodle' => $this->noodle,
+            'spotify' => $this->spotify,
         ]);
-        foreach(json_decode($this->articleTags) as $tag)
-        {
-            if(!isset($tag->id))
-            {
-                $newTag = Tag::create([
-                    'title'=>$tag->value,
-                ]);
-                $article->tags()->attach($newTag->id);
-            }
-            else
-            {
-                $article->tags()->attach($tag->id);
-            }
-        }
-        $article->writer()->associate(1);
-        $article->category()->associate($this->category);
+        
         $extension = $this->featuredImage->extension();
-        $path = 'uploads/'.$this->articleSlug.'-'.now()->timestamp.'.'.$extension;
-        $article->addMedia($this->featuredImage->getRealPath())
+        $path = 'uploads/'.$this->songSlug.'-'.now()->timestamp.'.'.$extension;
+        $song->addMedia($this->featuredImage->getRealPath())
                     ->usingFileName($path)
                     ->usingName($path)
                     ->toMediaCollection('cover');
-        $article->save();
-        return redirect()->to('/article/'.$this->articleSlug);
+        return redirect()->to('/song/'.$this->songSlug);
     }
     public function render()
     {
-        $this->articleSlug = $this->articleTitle ? Str::slug($this->articleTitle) : NULL;
-        $this->categories = Category::all();
-        $this->tags = str_replace("'title'","'value'",str_replace('"', "'", json_encode(Tag::get(['id','title']))));
+        $this->songSlug = $this->songTitle ? Str::slug($this->songTitle) : NULL;
         return view('livewire.b-e.pages.add-song');
     }
 }
